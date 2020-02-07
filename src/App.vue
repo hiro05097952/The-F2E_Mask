@@ -7,6 +7,7 @@
     <l-map
       :center="center"
       :zoom="zoom"
+      :options="{zoomControl: false}"
       style="height: 100%; width: 100%"
       @update:zoom="zoomUpdated"
       @update:center="centerUpdated"
@@ -97,11 +98,14 @@ export default {
 
 <style lang="scss">
 @import '@/assets/scss/helpers/_reset';
+@import "@/assets/scss/helpers/_breakpoint";
 @import "~leaflet.markercluster/dist/MarkerCluster.css";
 @import "~leaflet.markercluster/dist/MarkerCluster.Default.css";
+
 html, body{
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 #app{
   width: 100%;
@@ -214,5 +218,23 @@ html, body{
 }
 .leaflet-popup-close-button{
   margin: 5px 5px 0 0;
+}
+@include rwd(576px) {
+  .leaflet-popup-content-wrapper{
+    div.leaflet-popup-content{
+      max-width: 280px;
+      padding: 15px 20px 10px 20px;
+      h3{
+        font-size: 16px
+      }
+      p{
+        font-size: 14px;
+      }
+    }
+    button{
+      padding: 8px 0;
+      font-size: 12px;
+    }
+  }
 }
 </style>

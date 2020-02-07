@@ -1,0 +1,27 @@
+@mixin rwd($mediaWidth) {
+  @if $mediaWidth == 768px {
+    @media screen and (max-width: 768px) {
+      @content;
+    }
+  }@else if $mediaWidth == 576px {
+    @media screen and (max-width: 576px) {
+      @content;
+    }
+  }@else if $mediaWidth == 480px {
+    @media screen and (max-width: 480px) {
+      @content;
+    }
+  }@else if $mediaWidth == 414px {
+    @media screen and (max-width: 414px) {
+      @content;
+    }
+  }@else if $mediaWidth == 375px {
+    @media screen and (max-width: 375px) {
+      @content;
+    }
+  }@else if $mediaWidth == mobile {
+    @media screen and (max-width: 320px) {
+      @content;
+    }
+  }
+}

@@ -46,7 +46,7 @@
     </ul>
     <button class="toggleBtn" @click="isOpen = !isOpen">
       <i class="icon_arrow" :class="{'close' : !isOpen}"></i>
-      </button>
+    </button>
   </div>
 </template>
 

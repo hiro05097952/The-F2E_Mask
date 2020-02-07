@@ -1,4 +1,5 @@
 $blue: #668AFE;
+@import "helpers/breakpoint";
 
 .category{
   height: 100%;
@@ -138,6 +139,33 @@ i{
     transition: all .5s;
     &.close{
       transform: rotate(180deg);
+    }
+  }
+}
+@include rwd(576px) {
+  .category{
+    top: 25%;
+    left: 0;
+    right: 0;
+    bottom: none;
+    width: 100%;
+    height: 75%;
+    transition: all .5s;
+    &.close{
+      transform: translateY(60%);
+    }
+  }
+  ul.list{
+    height: calc(100% - 200px);
+    overflow: hidden;
+  }
+  button{
+    &.toggleBtn.toggleBtn{
+      top: -31px;
+      left: 0;
+      right: 0;
+      transform: rotate(-90deg);
+      margin: 0 auto;
     }
   }
 }
