@@ -2,6 +2,7 @@
   <div id="app">
     <searchBar
       @pass-evt="listMask"
+      @pass-move-drag="moveDrag"
     >
     </searchBar>
     <l-map
@@ -24,6 +25,10 @@
             <h3>{{item.properties.name}}</h3>
             <p><i class="icon_pin"></i>{{item.properties.address}}</p>
             <p><i class="icon_tel"></i>{{item.properties.phone}}</p>
+            <div class="noteWrap">
+              <i class="icon_remark"></i>
+              <span>{{item.properties.note}}</span>
+            </div>
             <div class="btnWrap">
               <button :class="{'soldout': !item.properties.mask_adult}">
                 成人：{{ item.properties.mask_adult | mask }}
@@ -86,6 +91,10 @@ export default {
         this.center = [passArr[0].geometry.coordinates[1], passArr[0].geometry.coordinates[0]];
       }, 500);
     },
+    moveDrag(passArr) {
+      this.zoom = 18;
+      this.center = [passArr[1], passArr[0]];
+    },
   },
   computed: {
     markList() {
@@ -126,7 +135,7 @@ html, body{
       letter-spacing: 1.5px;
     }
     p{
-      font-size: 16px;
+      font-size: 14px;
       color: #888888;
       margin: 0 0 8px 0;
       letter-spacing: 1px;
@@ -136,6 +145,17 @@ html, body{
     }
     ::-webkit-scrollbar{
       display: none;
+    }
+    span{
+      color: #888888;
+      letter-spacing: 0.5px;
+      line-height: 20px;
+      font-size: 14px;
+      width: calc(100% - 15px);
+    }
+    .noteWrap{
+      display: flex;
+      align-items: baseline;
     }
   }
   .btnWrap{
@@ -184,11 +204,16 @@ html, body{
     width: 15px;
     height: 15px;
     margin-right: 10px;
+    transform: translateY(2px);
     &.icon_pin{
       background: url('~@/assets/pin.svg') center center / contain no-repeat;
     }
     &.icon_tel{
       background: url('~@/assets/tel.svg') center center / contain no-repeat;
+    }
+    &.icon_remark{
+      background: url('~@/assets/remark.svg') center center / contain no-repeat;
+      filter: invert(63%) sepia(5%) saturate(26%) hue-rotate(326deg) brightness(85%) contrast(85%);
     }
     &.icon_arrow{
       height: 20px;
@@ -226,9 +251,6 @@ html, body{
       padding: 15px 20px 10px 20px;
       h3{
         font-size: 16px
-      }
-      p{
-        font-size: 14px;
       }
     }
     button{

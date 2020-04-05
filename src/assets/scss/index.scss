@@ -51,16 +51,17 @@ select{
     1px 1.5em;
   background-repeat: no-repeat;
   letter-spacing: 1px;
+  cursor: pointer;
 }
 ul{
   overflow: scroll;
   height: calc(100vh - 200px);
 }
 li{
-  height: 190px;
   padding: 24px;
   box-sizing: border-box;
   border-top: 1px solid #DDDDDD;
+  cursor: pointer;
   h3{
     color: #333333;
     font-size: 18px;
@@ -76,8 +77,23 @@ li{
     overflow-x: auto;
     overflow-y: hidden;
   }
+  span{
+    display: inline-block;
+    margin-top: 7px;
+    color: #888888;
+    letter-spacing: 0.5px;
+    line-height: 25px;
+    width: calc(100% - 15px);
+  }
+  .noteWrap{
+    display: flex;
+    align-items: baseline;
+  }
   ::-webkit-scrollbar{
     display: none;
+  }
+  &:hover{
+    box-shadow: 0 0 5px #cccccc;
   }
 }
 .btnWrap{
@@ -96,6 +112,7 @@ button{
   font-size: 14px;
   max-width: 49%;
   max-height: 44px;
+  cursor: pointer;
   &.soldout{
     background: #E2E2E2;
     color: #9C9C9C;
@@ -131,6 +148,11 @@ i{
   }
   &.icon_tel{
     background: url('~@/assets/tel.svg') center center / contain no-repeat;
+  }
+  &.icon_remark{
+    background: url('~@/assets/remark.svg') center center / contain no-repeat;
+    filter: invert(63%) sepia(5%) saturate(26%) hue-rotate(326deg) brightness(85%) contrast(85%);
+    transform: translateY(1px);
   }
   &.icon_arrow{
     height: 20px;
